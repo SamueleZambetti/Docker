@@ -7,6 +7,8 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: segreta
       MYSQL_DATABASE: esempio
+      DB_USER: dbadmin
+      DB_PASSWORD: dbadminpass
     volumes:
       - mysql-data:/var/lib/mysql
     healthcheck:
@@ -19,11 +21,11 @@ services:
     build:
       context: ./backend
       dockerfile: Dockerfile
-    
     container_name: esempio-flask
     environment:
       DB_HOST: db
-      DB_PASSWORD: segreta
+      DB_USER: dbadmin
+      DB_PASSWORD: dbadminpass
       DB_NAME: esempio
     volumes:
       - uploads:/app/uploads
